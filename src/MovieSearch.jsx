@@ -8,6 +8,8 @@ function MovieSearch() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const API_KEY = 'a7a80e69'; // Using the provided API key
+
   const handleSearch = async () => {
     setLoading(true);
     setError(null);
@@ -15,7 +17,7 @@ function MovieSearch() {
 
     try {
       const response = await axios.get(
-        `http://www.omdbapi.com/?s=${searchTerm}&apikey=YOUR_OMDB_API_KEY`
+        `http://www.omdbapi.com/?s=${searchTerm}&apikey=${API_KEY}`
       );
 
       if (response.data.Search) {
@@ -38,7 +40,7 @@ function MovieSearch() {
 
     try {
       const response = await axios.get(
-        `http://www.omdbapi.com/?apikey=[aas6shbdv2vhdhu8s]&i=${imdbID}`
+        `http://www.omdbapi.com/?i=${imdbID}&apikey=${API_KEY}`
       );
       setSelectedMovie(response.data);
     } catch (err) {
